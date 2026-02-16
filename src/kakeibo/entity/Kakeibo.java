@@ -1,0 +1,73 @@
+package kakeibo.entity;
+
+import java.util.Date;
+
+public class Kakeibo implements Entity {
+
+	private int id;
+	private int himokuid;
+	private String memo;
+	private int nyuukingaku;
+	private int sykkingaku;
+	private Date hiduke;
+	private Himoku himokutable;
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getHimokuid() {
+		return himokuid;
+	}
+	
+	public void setHimokuid(int himokuid) {
+		this.himokuid = himokuid;
+	}
+	
+	public String getMemo() {
+		return memo;
+	}
+	
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+	
+	public int getNyuukingaku() {
+		return nyuukingaku;
+	}
+	
+	public void setNyuukingaku(int nyuukingaku) {
+		this.nyuukingaku = nyuukingaku;
+	}
+	
+	public int getSykkingaku() {
+		return sykkingaku;
+	}
+	
+	public void setSykkingaku(int sykkingaku) {
+		this.sykkingaku = sykkingaku;
+	}
+	
+	public Date getHiduke() {
+		return hiduke;
+	}
+	public void setHiduke(Date hiduke) {
+		this.hiduke = hiduke;
+	}
+	
+	public Himoku getHimokutable() {
+		return himokutable;
+	}
+	
+	public void setHimokutable(Himoku himokutable) {
+		this.himokutable = himokutable;
+	}
+	
+	
+}
