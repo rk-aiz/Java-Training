@@ -8,7 +8,7 @@ public interface DatabaseOperation {
 	
 	List<Entity> findAll();
 	
-	Entity findById();
+	Entity findById(int id);
 	
 	int insertEntity(Entity entity);
 	

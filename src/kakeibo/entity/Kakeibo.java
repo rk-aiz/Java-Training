@@ -1,5 +1,6 @@
 package kakeibo.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Kakeibo implements Entity {
@@ -8,8 +9,8 @@ public class Kakeibo implements Entity {
 	private int himokuid;
 	private String memo;
 	private int nyuukingaku;
-	private int sykkingaku;
-	private Date hiduke;
+	private int syukkingaku;
+	private LocalDateTime hiduke;
 	private Himoku himokutable;
 	
 	
@@ -46,18 +47,18 @@ public class Kakeibo implements Entity {
 		this.nyuukingaku = nyuukingaku;
 	}
 	
-	public int getSykkingaku() {
-		return sykkingaku;
+	public int getSyukkingaku() {
+		return syukkingaku;
 	}
 	
-	public void setSykkingaku(int sykkingaku) {
-		this.sykkingaku = sykkingaku;
+	public void setSyukkingaku(int sykkingaku) {
+		this.syukkingaku = sykkingaku;
 	}
 	
-	public Date getHiduke() {
+	public LocalDateTime getHiduke() {
 		return hiduke;
 	}
-	public void setHiduke(Date hiduke) {
+	public void setHiduke(LocalDateTime hiduke) {
 		this.hiduke = hiduke;
 	}
 	
