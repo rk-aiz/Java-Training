@@ -132,11 +132,9 @@ public class HimokuRepository implements DatabaseOperation {
 		int insCount = 0;
 
 		String sql = """
-				INSERT INTO himoku (
-						himoku,
-						deleteflag)
-				VALUES (?, ?)
-						""";
+				INSERT INTO himoku (himoku)
+				VALUES (?)
+					""";
 		
 		try(Connection con = DatabaseConnection.connect();
 			PreparedStatement pstmt = con.prepareStatement(sql);) {
