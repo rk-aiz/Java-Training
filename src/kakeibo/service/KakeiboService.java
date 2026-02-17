@@ -1,6 +1,5 @@
 package kakeibo.service;
 
-import java.sql.SQLDataException;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;

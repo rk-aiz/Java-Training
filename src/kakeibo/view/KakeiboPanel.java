@@ -11,35 +11,26 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import kakeibo.service.KakeiboService;
+
 public class KakeiboPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 
+	private KakeiboService kakeiboService;
+
 	/**
 	 * Create the panel.
 	 */
-	public KakeiboPanel() {
+	public KakeiboPanel(KakeiboService kakeiboService) {
+
+		this.kakeiboService = kakeiboService;
 		
 		setLayout(null);
 		setSize(726, 433);
 		
-		Object[][] data = {
-				{ 1, "2024-02-10", "給料","1月の給料",280000,0 },
-				{ 2, "2024-02-11","教養娯楽費","書籍を購入",0,2800 },
-				{ 3, "2024-02-18","水道光熱費","1月の電気代",0,7560 },
-				{ 4, "2024-02-14","交際費","同期会の会費",0,6000 },
-				{ 5, "2026-01-29","食費","マクドナルド",0,850 }
-		};
-		
-		JLabel himokuLabel = new JLabel("費目");
-		himokuLabel.setBounds(26, 322, 48, 13);
-		add(himokuLabel);
-		
-		String[] hearder = {"ID", "費目名", "メモ", "入金額", "出金額", "日付"};
-//		JLabel[] hearder = {idLabel, idLabel, idLabel, idLabel, idLabel, idLabel};
-		
-		DefaultTableModel model = new DefaultTableModel(data, hearder);
+		DefaultTableModel model = kakeiboService.createTable();
 		
 		JTable table = new JTable(model) {
 			@Override
@@ -79,6 +70,10 @@ public class KakeiboPanel extends JPanel {
 		himokuComboBox.addItem("豚骨ラーメン");
 		himokuComboBox.addItem("カレー");
 		himokuComboBox.addItem("焼きそば");
+		
+		JLabel himokuLabel = new JLabel("費目");
+		himokuLabel.setBounds(26, 322, 48, 13);
+		add(himokuLabel);
 		
 		JLabel memoLabel = new JLabel("メモ");
 		memoLabel.setBounds(26, 355, 48, 13);
