@@ -6,6 +6,10 @@ import java.awt.Rectangle;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import kakeibo.repository.HimokuRepository;
+import kakeibo.repository.KakeiboRepository;
+import kakeibo.service.HimokuService;
+import kakeibo.service.KakeiboService;
 import kakeibo.view.HimokuPanel;
 import kakeibo.view.KakeiboPanel;
 
@@ -17,6 +21,15 @@ public class MainPanel extends JPanel {
 	private JPanel displayPanel;
 	
 	public MainPanel() {
+		
+		KakeiboRepository kakeiboRepository = new KakeiboRepository();
+		HimokuRepository himokuRepository = new HimokuRepository();
+		
+		KakeiboService kakeiboService = new KakeiboService(
+				kakeiboRepository, himokuRepository);
+		HimokuService himokuService = new HimokuService(
+				himokuRepository);
+		
 		setBounds(new Rectangle(0, 0, 750, 500));
 		setLayout(null);
 		
@@ -25,8 +38,10 @@ public class MainPanel extends JPanel {
 		cardLayout = new CardLayout();
 		displayPanel.setLayout(cardLayout);
 		
-		displayPanel.add("家計簿パネル", new KakeiboPanel());
-		displayPanel.add("費目パネル", new HimokuPanel());
+		displayPanel.add("家計簿パネル", new KakeiboPanel(
+				kakeiboService, himokuService));
+		displayPanel.add("費目パネル", new HimokuPanel(
+				himokuService));
 		displayPanel.setBounds(12, 10, 726, 420);
 		
 		JPanel buttonsPanel = new JPanel();
@@ -35,10 +50,16 @@ public class MainPanel extends JPanel {
 		
 		JButton button1 = new JButton("家計簿");
 		button1.setBounds(33, 7, 138, 24);
+		button1.addActionListener(e -> {
+			cardLayout.show(displayPanel, "家計簿パネル");
+		});
 		buttonsPanel.add(button1);
 		
 		JButton button2 = new JButton("費目");
 		button2.setBounds(183, 7, 138, 24);
+		button2.addActionListener(e -> {
+			cardLayout.show(displayPanel, "費目パネル");
+		});
 		buttonsPanel.add(button2);
 		
 		add(displayPanel);

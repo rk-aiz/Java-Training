@@ -16,6 +16,13 @@ public class KakeiboService {
 	private HimokuRepository himokuRepository;
 	List<Entity> list;
 	
+	public KakeiboService(
+			KakeiboRepository kakeiboRepository,
+			HimokuRepository himokuRepository) {
+		this.kakeiboRepository = kakeiboRepository;
+		this.himokuRepository = himokuRepository;
+	}
+	
 	public DefaultTableModel createTable() {
 		DefaultTableModel model = new DefaultTableModel();
 		String[] column = {"ID","費目名","メモ","入金額","出金額","日付"};

@@ -8,9 +8,13 @@ import kakeibo.entity.Entity;
 import kakeibo.entity.Himoku;
 import kakeibo.repository.HimokuRepository;
 
-public class HomokuService {
+public class HimokuService {
 
 	HimokuRepository himokuRepository;
+	
+	public HimokuService(HimokuRepository himokuRepository) {
+		this.himokuRepository = himokuRepository;
+	}
 
 	public DefaultTableModel createTable() {
 		DefaultTableModel model = new DefaultTableModel();

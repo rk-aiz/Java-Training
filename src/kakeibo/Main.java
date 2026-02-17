@@ -37,7 +37,6 @@ public class Main extends JFrame {
 		contentPane = new MainPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-
 	}
 
 }

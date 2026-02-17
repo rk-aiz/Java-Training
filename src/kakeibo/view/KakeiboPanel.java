@@ -11,6 +11,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import kakeibo.entity.Entity;
+import kakeibo.entity.Himoku;
+import kakeibo.service.HimokuService;
 import kakeibo.service.KakeiboService;
 
 public class KakeiboPanel extends JPanel {
@@ -18,14 +21,18 @@ public class KakeiboPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 
-	private KakeiboService kakeiboService;
+	private final KakeiboService kakeiboService;
+	private final HimokuService himokuService;
 
 	/**
 	 * Create the panel.
 	 */
-	public KakeiboPanel(KakeiboService kakeiboService) {
+	public KakeiboPanel(
+			KakeiboService kakeiboService,
+			HimokuService himokuService) {
 
 		this.kakeiboService = kakeiboService;
+		this.himokuService = himokuService;
 		
 		setLayout(null);
 		setSize(726, 433);
@@ -43,33 +50,17 @@ public class KakeiboPanel extends JPanel {
 		JScrollPane tableScrollPane = new JScrollPane(table);
 		tableScrollPane.setBounds(12, 10, 690, 280);
 		
-		
-//		「費目」ラベル														setBounds(12, 303, 50, 15)
-//		費目コンボボックス														setBounds(60, 300, 263, 20)
-//		「メモ」ラベル														setBounds(12, 337, 50, 15)
-//		メモ入力JTextArea（JScrollPane使用）									setBounds(12, 337, 50, 15)
-//		「入出金」ラベル														setBounds(381, 304, 50, 13)
-//		入金ラジオボタン														setBounds(439, 300, 65, 21)
-//		出金ラジオボタン														setBounds(525, 300, 65, 21)
-//		「金額」ラベル														setBounds(381, 338, 50, 13)
-//		金額入力テキストフィールド														setBounds(438, 335, 169, 19)
-//		登録/変更ボタン														setBounds(450, 364, 100, 20)
-//		データ削除ボタン														setBounds(560, 364, 100, 20)
-
-		
 		add(tableScrollPane);
-
-		
 		
 		JComboBox<String> himokuComboBox = new JComboBox<>();
 		himokuComboBox.setBounds(75, 320, 134, 20);
 		add(himokuComboBox);
 		
-		himokuComboBox.addItem("寿司");
-		himokuComboBox.addItem("豚キムチ");
-		himokuComboBox.addItem("豚骨ラーメン");
-		himokuComboBox.addItem("カレー");
-		himokuComboBox.addItem("焼きそば");
+		for (Entity entity : himokuService.getList()) {
+			if (entity instanceof Himoku himoku && !himoku.isDeleteflag()) {
+				himokuComboBox.addItem(himoku.getHimoku());
+			}
+		}
 		
 		JLabel himokuLabel = new JLabel("費目");
 		himokuLabel.setBounds(26, 322, 48, 13);

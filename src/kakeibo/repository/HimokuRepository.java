@@ -23,6 +23,7 @@ public class HimokuRepository implements DatabaseOperation {
 						himoku,
 						deleteflag
 				FROM himoku
+				ORDER BY id
 						""";
 		
 		try(Connection con = DatabaseConnection.connect();
@@ -140,7 +141,6 @@ public class HimokuRepository implements DatabaseOperation {
 			PreparedStatement pstmt = con.prepareStatement(sql);) {
 
 			pstmt.setString(1, himoku.getHimoku());
-			pstmt.setBoolean(2, himoku.isDeleteflag());
 			insCount = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
