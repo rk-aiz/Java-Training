@@ -33,7 +33,7 @@ public class Main extends JFrame {
 	public Main() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(750, 500);
+		setSize(750, 530);
 		contentPane = new MainPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

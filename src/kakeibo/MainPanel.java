@@ -1,6 +1,7 @@
 package kakeibo;
 
 import java.awt.CardLayout;
+import java.awt.Rectangle;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -16,6 +17,7 @@ public class MainPanel extends JPanel {
 	private JPanel displayPanel;
 	
 	public MainPanel() {
+		setBounds(new Rectangle(0, 0, 750, 500));
 		setLayout(null);
 		
 		// 上部パネル
@@ -23,24 +25,24 @@ public class MainPanel extends JPanel {
 		cardLayout = new CardLayout();
 		displayPanel.setLayout(cardLayout);
 		
-		displayPanel.add("パネル1", new KakeiboPanel());
-		displayPanel.add("パネル2", new HimokuPanel());
-		displayPanel.setBounds(12, 10, 628, 274);
+		displayPanel.add("家計簿パネル", new KakeiboPanel());
+		displayPanel.add("費目パネル", new HimokuPanel());
+		displayPanel.setBounds(12, 10, 726, 420);
 		
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBounds(12, 304, 628, 98);
+		buttonsPanel.setLayout(null);
+		buttonsPanel.setBounds(12, 440, 359, 37);
 		
-		JButton button1 = new JButton("ボタン1");
-		button1.setActionCommand("ボタン1");
+		JButton button1 = new JButton("家計簿");
+		button1.setBounds(33, 7, 138, 24);
 		buttonsPanel.add(button1);
 		
-		JButton button2 = new JButton("ボタン2");
-		button2.setActionCommand("ボタン2");
+		JButton button2 = new JButton("費目");
+		button2.setBounds(183, 7, 138, 24);
 		buttonsPanel.add(button2);
 		
-		JButton button3 = new JButton("ボタン3");
-		button3.setActionCommand("ボタン3");
-		buttonsPanel.add(button3);s
+		add(displayPanel);
+		add(buttonsPanel);
 	}
 
 }
